@@ -66,6 +66,20 @@ app.post("/setProduct", (req, res) => {
   });
 });
 
+app.put("/editProduct", (req, res) => {
+  const { id_product } = req.body;
+  const { name } = req.body;
+  const { price } = req.body;
+  const { description } = req.body;
+
+  let sql =
+    "UPDATE products SET name = ?, price = ?, description = ? WHERE id_product = ?";
+
+  db.query(sql, [name, price, description, id_product], (err, response) => {
+    err ? console.log(err) : res.send(response);
+  });
+});
+
 app.listen(3001, () => {
   console.log("listen on port 3001");
 });

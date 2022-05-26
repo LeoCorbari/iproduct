@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import EditProduct from "./pages/editProduct/editProduct";
 import Home from "./pages/home/Home";
-
 import Login from "./pages/login/Login";
-import Product from "./pages/product/Product";
+import NewProduct from "./pages/newProduct/NewProduct";
 
 export default function AppRouters() {
   const PrivateRoute = ({ children, redirectTo }) => {
-    const isAuthenticated = localStorage.getItem("user") !== null;
+    const isAuthenticated = sessionStorage.getItem("user") !== null;
 
     return isAuthenticated ? children : <Navigate to={redirectTo} />;
   };
@@ -25,18 +25,18 @@ export default function AppRouters() {
           }
         />
         <Route
-          path="product"
+          path="newProduct"
           element={
             <PrivateRoute redirectTo="/">
-              <Product />
+              <NewProduct />
             </PrivateRoute>
           }
         />
         <Route
-          path="product/:id_product"
+          path="editProduct/:id_product"
           element={
             <PrivateRoute redirectTo="/">
-              <Product />
+              <EditProduct />
             </PrivateRoute>
           }
         />

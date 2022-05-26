@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <nav>
       <Bar>
-        <Link to="/product">Adicionar novo produto</Link>
+        <Link to="/newProduct">Adicionar novo produto</Link>
       </Bar>
     </nav>
   );

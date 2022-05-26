@@ -3,28 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
 import { productSchema } from "../../validations/productSchema";
+import { toast } from "react-toastify";
 
-export default function Product() {
+export default function NewProduct() {
   const navigate = useNavigate();
-  const { id_product } = useParams();
-  const [editProduct, setEditProduct] = useState();
-
-  useEffect(() => {
-    const resultado = async function getProductEspecific() {
-      await Axios.get(
-        `http://localhost:3001/getProductById/${id_product}`
-      ).then((response) => {
-        response.data.map((value) => {
-          setEditProduct({
-            name: value.name,
-            price: value.price,
-            description: value.description,
-          });
-        });
-      });
-    };
-    resultado();
-  }, []);
 
   const handleSubmit = (values) => {
     Axios.post("http://localhost:3001/setProduct", {
@@ -32,6 +14,7 @@ export default function Product() {
       price: values.price,
       description: values.description,
     }).then((response) => {
+      toast.success(values.name + " adicionado!");
       navigate("/home");
     });
   };
@@ -39,7 +22,11 @@ export default function Product() {
   return (
     <div>
       <Formik
-        initialValues={{}}
+        initialValues={{
+          name: "",
+          price: "",
+          description: "",
+        }}
         onSubmit={handleSubmit}
         validationSchema={productSchema}
       >
@@ -68,11 +55,7 @@ export default function Product() {
 
           <ErrorMessage component="spam" name="description" />
 
-          {typeof editProduct !== "undefined" ? (
-            <button type="submit">Editar</button>
-          ) : (
-            <button type="submit">Enviar</button>
-          )}
+          <button type="submit">Enviar</button>
         </Form>
       </Formik>
     </div>

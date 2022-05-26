@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function List() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function List() {
   const deleteProduct = (id_product) => {
     Axios.delete(`http://localhost:3001/delete/${id_product}`).then(
       (response) => {
-        // TO DO - Show here the tosty of sucsess delete
+        toast.success("produto excluido!");
         getProducts();
       }
     );
@@ -48,7 +49,9 @@ export default function List() {
                   <td>{value.description}</td>
                   <td>
                     <button
-                      onClick={() => navigate("/product/" + value.id_product)}
+                      onClick={() =>
+                        navigate("/editProduct/" + value.id_product)
+                      }
                     >
                       Edit
                     </button>
