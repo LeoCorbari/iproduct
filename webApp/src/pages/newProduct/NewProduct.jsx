@@ -7,29 +7,29 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 
 const Container = styled.div`
-font-family: "Montserrat", sans-serif;
-font-size: 1.2em;
-margin: 0;
-width: 100vw;
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-place-items: center;
-overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
 `;
 
 const Card = styled.div`
-width: 350px;
-padding: 20px;
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  width: 350px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-spam {
-  font-size: small;
-  display: block;
-  color: red;
-  position: absolute;
-}
+  spam {
+    font-size: small;
+    display: block;
+    color: red;
+    position: absolute;
+  }
 `;
 
 const Title = styled.h1`
@@ -48,7 +48,6 @@ const StyledField = styled(Field)`
   padding-left: 10px;
 `;
 
-
 const StyledButton = styled.button.attrs({ type: "submit" })`
   font-family: "Montserrat", sans-serif;
   display: block;
@@ -62,6 +61,7 @@ const StyledButton = styled.button.attrs({ type: "submit" })`
   &:hover,
   &:focus {
     background-color: #616161;
+    cursor: pointer;
   }
 `;
 
@@ -82,53 +82,53 @@ export default function NewProduct() {
   return (
     <Container>
       <Card>
-      <Title>Novo Produto</Title>
-      <Formik
-        initialValues={{
-          name: "",
-          price: "",
-          description: "",
-        }}
-        onSubmit={handleSubmit}
-        validationSchema={productSchema}
-      >
-        <Form>
-        <InputGroup>
-          <label>Nome</label>
-          <StyledField
-            type="text"
-            name="name"
-            placeholder="Digite o nome do produto"
-          />
+        <Title>Novo Produto</Title>
+        <Formik
+          initialValues={{
+            name: "",
+            price: "",
+            description: "",
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={productSchema}
+        >
+          <Form>
+            <InputGroup>
+              <label>Nome</label>
+              <StyledField
+                type="text"
+                name="name"
+                placeholder="Digite o nome do produto"
+              />
 
-          <ErrorMessage component="spam" name="name" />
-          </InputGroup>
+              <ErrorMessage component="spam" name="name" />
+            </InputGroup>
 
-          <InputGroup>
-          <label>Preço</label>
-          <StyledField
-            type="text"
-            name="price"
-            placeholder="Digite o preço do produto"
-          />
+            <InputGroup>
+              <label>Preço</label>
+              <StyledField
+                type="text"
+                name="price"
+                placeholder="Digite o preço do produto"
+              />
 
-          <ErrorMessage component="spam" name="price" />
-          </InputGroup>
+              <ErrorMessage component="spam" name="price" />
+            </InputGroup>
 
-          <InputGroup>
-          <label>Descrição</label>
-          <StyledField
-            type="text"
-            name="description"
-            placeholder="Digite a descrição do produto"
-          />
+            <InputGroup>
+              <label>Descrição</label>
+              <StyledField
+                type="text"
+                name="description"
+                placeholder="Digite a descrição do produto"
+              />
 
-          <ErrorMessage component="spam" name="description" />
-          </InputGroup>
+              <ErrorMessage component="spam" name="description" />
+            </InputGroup>
 
-          <StyledButton>Enviar</StyledButton>
-        </Form>
-      </Formik>
+            <StyledButton>Enviar</StyledButton>
+          </Form>
+        </Formik>
       </Card>
     </Container>
   );
