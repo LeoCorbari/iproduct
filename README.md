@@ -2,7 +2,7 @@
  A simple CRUD project with Vite for create tamplete.
  NodeJS in backend and database MySQL
  
- #Dependences
+﻿#Dependences
  
  ```
   "dependencies": {
@@ -20,7 +20,7 @@
   },
   
   ```
-  #SQL for Database create using MySQL
+ ﻿#SQL for Database create using MySQL
   
   ```
   
