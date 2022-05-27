@@ -54,7 +54,6 @@ const StyledButton = styled.button.attrs({ type: "submit" })`
   display: block;
   width: -webkit-fill-available;
   height: 30px;
-  margin-top: 10px;
   color: white;
   border: 0;
   border-radius: 5px;
